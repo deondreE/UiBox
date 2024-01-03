@@ -1,4 +1,0 @@
-framework module UiBoxTarget {
-  header "UiBoxTarget-Swift.h"
-  requires objc
-}
