@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-@available(macOS 10.15, *)
+@available(iOS 17.0, macOS 10.15, *)
 struct UiBoxBtn: View {
     
     @Binding var innerText: String
