@@ -7,4 +7,3 @@ Component library for mobile devices.
 download `xcodegen`.
 
 run `xcodegen generate`
-# UiBox
