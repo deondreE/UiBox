@@ -1,0 +1,28 @@
+{
+  "" : {
+    "diagnostics" : "/Users/deondreenglish/Projects/open-source/UiBox/build/UiBox.build/Debug-iphoneos/UiBoxTarget.build/Objects-normal/arm64/UiBoxTarget-master.dia",
+    "emit-module-dependencies" : "/Users/deondreenglish/Projects/open-source/UiBox/build/UiBox.build/Debug-iphoneos/UiBoxTarget.build/Objects-normal/arm64/UiBoxTarget-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/deondreenglish/Projects/open-source/UiBox/build/UiBox.build/Debug-iphoneos/UiBoxTarget.build/Objects-normal/arm64/UiBoxTarget-master-emit-module.dia",
+    "swift-dependencies" : "/Users/deondreenglish/Projects/open-source/UiBox/build/UiBox.build/Debug-iphoneos/UiBoxTarget.build/Objects-normal/arm64/UiBoxTarget-master.swiftdeps"
+  },
+  "/Users/deondreenglish/Projects/open-source/UiBox/Sources/UiBox/Button.swift" : {
+    "const-values" : "/Users/deondreenglish/Projects/open-source/UiBox/build/UiBox.build/Debug-iphoneos/UiBoxTarget.build/Objects-normal/arm64/Button.swiftconstvalues",
+    "dependencies" : "/Users/deondreenglish/Projects/open-source/UiBox/build/UiBox.build/Debug-iphoneos/UiBoxTarget.build/Objects-normal/arm64/Button.d",
+    "diagnostics" : "/Users/deondreenglish/Projects/open-source/UiBox/build/UiBox.build/Debug-iphoneos/UiBoxTarget.build/Objects-normal/arm64/Button.dia",
+    "index-unit-output-path" : "/UiBox.build/Debug-iphoneos/UiBoxTarget.build/Objects-normal/arm64/Button.o",
+    "llvm-bc" : "/Users/deondreenglish/Projects/open-source/UiBox/build/UiBox.build/Debug-iphoneos/UiBoxTarget.build/Objects-normal/arm64/Button.bc",
+    "object" : "/Users/deondreenglish/Projects/open-source/UiBox/build/UiBox.build/Debug-iphoneos/UiBoxTarget.build/Objects-normal/arm64/Button.o",
+    "swift-dependencies" : "/Users/deondreenglish/Projects/open-source/UiBox/build/UiBox.build/Debug-iphoneos/UiBoxTarget.build/Objects-normal/arm64/Button.swiftdeps",
+    "swiftmodule" : "/Users/deondreenglish/Projects/open-source/UiBox/build/UiBox.build/Debug-iphoneos/UiBoxTarget.build/Objects-normal/arm64/Button~partial.swiftmodule"
+  },
+  "/Users/deondreenglish/Projects/open-source/UiBox/Sources/UiBox/UiBox.swift" : {
+    "const-values" : "/Users/deondreenglish/Projects/open-source/UiBox/build/UiBox.build/Debug-iphoneos/UiBoxTarget.build/Objects-normal/arm64/UiBox.swiftconstvalues",
+    "dependencies" : "/Users/deondreenglish/Projects/open-source/UiBox/build/UiBox.build/Debug-iphoneos/UiBoxTarget.build/Objects-normal/arm64/UiBox.d",
+    "diagnostics" : "/Users/deondreenglish/Projects/open-source/UiBox/build/UiBox.build/Debug-iphoneos/UiBoxTarget.build/Objects-normal/arm64/UiBox.dia",
+    "index-unit-output-path" : "/UiBox.build/Debug-iphoneos/UiBoxTarget.build/Objects-normal/arm64/UiBox.o",
+    "llvm-bc" : "/Users/deondreenglish/Projects/open-source/UiBox/build/UiBox.build/Debug-iphoneos/UiBoxTarget.build/Objects-normal/arm64/UiBox.bc",
+    "object" : "/Users/deondreenglish/Projects/open-source/UiBox/build/UiBox.build/Debug-iphoneos/UiBoxTarget.build/Objects-normal/arm64/UiBox.o",
+    "swift-dependencies" : "/Users/deondreenglish/Projects/open-source/UiBox/build/UiBox.build/Debug-iphoneos/UiBoxTarget.build/Objects-normal/arm64/UiBox.swiftdeps",
+    "swiftmodule" : "/Users/deondreenglish/Projects/open-source/UiBox/build/UiBox.build/Debug-iphoneos/UiBoxTarget.build/Objects-normal/arm64/UiBox~partial.swiftmodule"
+  }
+}

@@ -1,0 +1,25 @@
+name: UiBox
+options:
+  bundleIdPrefix: UiBox.dev
+configurations:
+  Debug:
+    buildSettings:
+      SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+      SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG
+  Release:
+    buildSettings:
+      SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+      SWIFT_ACTIVE_COMPILATION_CONDITIONS: ""
+targets:
+  UiBoxTarget:
+    type: framework
+    platform: iOS
+    sources: [Sources]
+    resources: [Resources]
+    settings:
+      base:
+        INFO_PLIST_FILE: UiBox/Info.plist
+      debug:
+        SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+      release:
+        SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"

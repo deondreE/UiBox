@@ -1,0 +1,52 @@
+{
+  "main_library": {
+    "exported_symbols": [
+      {
+        "data": {
+          "global": [
+            "_UiBoxTargetVersionNumber",
+            "_$s11UiBoxTarget6ButtonV7SwiftUI4ViewAAMc",
+            "_$s11UiBoxTarget6ButtonV01$D4Type7SwiftUI7BindingVySSGvg",
+            "_$s11UiBoxTarget6ButtonV01$D4Type7SwiftUI7BindingVySSGvpMV",
+            "_$s11UiBoxTarget6ButtonV4bodyQrvpMV",
+            "_$s11UiBoxTarget6ButtonV4bodyQrvg",
+            "_$s11UiBoxTarget6ButtonVMa",
+            "_$s11UiBoxTarget6ButtonV0D4TypeSSvs",
+            "_$s11UiBoxTarget6ButtonV4bodyQrvpQOMQ",
+            "_$s11UiBoxTarget6ButtonV0D4TypeSSvg",
+            "_$s11UiBoxTarget6ButtonVMn",
+            "_$s11UiBoxTarget6ButtonV0D4TypeSSvM",
+            "_$s11UiBoxTarget6ButtonV0D4TypeAC7SwiftUI7BindingVySSG_tcfC",
+            "_$s11UiBoxTarget6ButtonV0D4TypeSSvpMV",
+            "_$s11UiBoxTarget6ButtonVN",
+            "_UiBoxTargetVersionString"
+          ]
+        }
+      }
+    ],
+    "flags": [
+      {
+        "attributes": [
+          "not_app_extension_safe"
+        ]
+      }
+    ],
+    "install_names": [
+      {
+        "name": "@rpath/UiBoxTarget.framework/UiBoxTarget"
+      }
+    ],
+    "swift_abi": [
+      {
+        "abi": 7
+      }
+    ],
+    "target_info": [
+      {
+        "min_deployment": "17.2",
+        "target": "arm64-ios"
+      }
+    ]
+  },
+  "tapi_tbd_version": 5
+}
