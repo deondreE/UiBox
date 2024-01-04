@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  ErrorAlert.swift
 //  
 //
 //  Created by Deondre English on 1/4/24.
