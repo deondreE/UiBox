@@ -6,8 +6,9 @@
 //
 
 import SwiftUI
+import Foundation
 
-@available(iOS 17.0, macOS 10.15, *)
+@available(iOS 17.0, macOS 14.0, *)
 struct UiBoxBtn: View {
     
     @Binding var innerText: String
@@ -22,14 +23,21 @@ struct UiBoxBtn: View {
         Button  {
                 // callback
         } label: {
-            // TODO: do this with turnary operation.
-            if textBold {
-                Text(innerText)
+            if self.textBold {
+                Text(self.innerText)
                     .bold()
+                    .foregroundStyle(Color.white)
             } else {
-                Text(innerText)
-
+                Text(self.innerText)
+                    .foregroundStyle(Color.white)
             }
         }
+        .padding(10)
+        .background(
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.black)
+                .stroke(Color.gray, lineWidth: 1)
+        )
+        .frame(width: 150, height: 80)
     }
 }
