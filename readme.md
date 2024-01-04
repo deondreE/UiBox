@@ -6,7 +6,7 @@ Component library for mobile devices.
 
 -   [x] Button Changeable styles.
 -   [x] Error box.
--   [ ] Progress bar.
+-   [x] Progress bar.
 -   [ ] Alert box.
 -   [ ] Calendar.
 -   [ ] Container.
