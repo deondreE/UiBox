@@ -5,8 +5,8 @@ Component library for mobile devices.
 
 # Components inside this library 
 
-- [ ] Button Changeable styles.
-- [ ] Error box.
+- [x] Button Changeable styles.
+- [x] Error box.
 - [ ] Alert box.
 - [ ] Calendar.
 - [ ] Container.
