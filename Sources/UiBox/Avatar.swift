@@ -20,5 +20,7 @@ public struct Avatar: View {
         Image(imageSrc)
             .resizable()
             .aspectRatio(contentMode: .fit)
+            .clipShape(Circle())
+            .shadow(radius: 5)
     }
 }
