@@ -8,6 +8,7 @@
 import SwiftUI
 
 @available(iOS 17.0, macOS 14.0, *)
+/// The small image type used for user images often.
 public struct Avatar: View {
     
     private var imageSrc: String = ""
