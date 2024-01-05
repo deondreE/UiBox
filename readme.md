@@ -11,7 +11,7 @@ Component library for mobile devices.
 -   [ ] Calendar.
 -   [ ] Container.
 -   [ ] Purchase Container.
--   [ ] Avatar.
+-   [x] Avatar.
 -   [ ] Image.
 -   [ ] Form.
 -   [ ] DataTable.
