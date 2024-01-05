@@ -9,7 +9,7 @@ Component library for mobile devices.
 -   [x] Progress bar.
 -   [ ] Alert box.
 -   [ ] Calendar.
--   [ ] Container.
+-   [x] Container.
 -   [ ] Purchase Container.
 -   [x] Avatar.
 -   [ ] Image.
