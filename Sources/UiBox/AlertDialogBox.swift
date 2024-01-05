@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(iOS 17.0, macOS 14.0, *)
-struct AlertDialogBox: View {
+public struct AlertDialogBox: View {
     private var headingText: String
     private var innerText: String
     
@@ -22,7 +22,7 @@ struct AlertDialogBox: View {
         self.btn2Text = btn2Text
     }
     
-    var body: some View {
+    public var body: some View {
         VStack (alignment: .leading) {
             Text("Are you absolutely sure?")
                 .bold()

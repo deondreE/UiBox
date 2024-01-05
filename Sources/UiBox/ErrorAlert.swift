@@ -8,14 +8,14 @@
 import SwiftUI
 
 @available(iOS 17.0, macOS 14.0, *)
-struct ErrorAlert: View {
+public struct ErrorAlert: View {
     @Binding var errorText: String
     
     public init(errorText: Binding<String>) {
         self._errorText = errorText
     }
     
-    var body: some View {
+    public var body: some View {
         VStack {
             // TODO: Add icon for the error.
             ScrollView {

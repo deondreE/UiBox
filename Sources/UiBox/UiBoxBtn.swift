@@ -9,7 +9,7 @@ import SwiftUI
 import Foundation
 
 @available(iOS 17.0, macOS 14.0, *)
-struct UiBoxBtn: View {
+public struct UiBoxBtn: View {
     
     @Binding var innerText: String
     @Binding var textBold: Bool
@@ -19,7 +19,7 @@ struct UiBoxBtn: View {
         self._textBold = textBold
     }
     
-    var body: some View {
+    public var body: some View {
         Button  {
                 // callback
         } label: {

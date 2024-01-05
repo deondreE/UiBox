@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(iOS 17.0, macOS 14.0, *)
-struct Avatar: View {
+public struct Avatar: View {
     
     private var imageSrc: String
     
@@ -16,7 +16,7 @@ struct Avatar: View {
         self.imageSrc = imageSrc
     }
     
-    var body: some View {
+    public var body: some View {
         Image(imageSrc)
             .resizable()
             .aspectRatio(contentMode: .fit)

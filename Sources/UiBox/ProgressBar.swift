@@ -26,12 +26,12 @@ public struct BoundValue<T: BinaryFloatingPoint> {
 /// Progress view that allows for Styles.
 /// Also allows for changing increment, values.
 @available(iOS 17.0, macOS 14.0, *)
-struct ProgressBarStyle: ProgressViewStyle {
+public struct ProgressBarStyle: ProgressViewStyle {
   var completedColor: Color
   var remainingColor: Color
   var increments: Int
 
-  func makeBody(configuration: Configuration) -> some View {
+  public func makeBody(configuration: Configuration) -> some View {
       VStack{
           ZStack(alignment: .leading) {
               GeometryReader { geometry in
@@ -49,14 +49,14 @@ struct ProgressBarStyle: ProgressViewStyle {
 
 
 @available(iOS 17.0, macOS 14.0, *)
-struct ProgressBar: View {
+public struct ProgressBar: View {
     @BoundValue var progress: Double = 0.0
     
     public init(progress: BoundValue<Double>) {
         self._progress = progress
     }
     
-  var body: some View {
+  public var body: some View {
     VStack {
         ProgressView("Loading...", value: self.progress)
             .progressViewStyle(ProgressBarStyle(completedColor: .blue, remainingColor: .red, increments: 10))
