@@ -65,9 +65,9 @@ public struct ComboBox: View {
   @State private var buttonPosition: CGPoint = .zero
   
   // init variables.
-  private var dataString: Data
+  private var dataString: String?
   
-  public init(dataString: Data) {
+  public init(dataString: String?) {
     self.dataString = dataString
   }
 
@@ -125,14 +125,19 @@ public struct ComboBox: View {
         }
       }
       .onAppear {
-        if let jsonData = self.dataString.data(using: .utf8) {
-          do {
-            let decodedOptions = try JSONDecoder().decode([Option].self, from: self.dataString)
-            options = decodedOptions
-          } catch {
-            print("Error decoding json: \(error)")
+        if (self.dataString == nil) {
+          return
+        } else {
+          if let jsonData = self.dataString?.data(using: .utf8) {
+            do {
+              let decodedOptions = try JSONDecoder().decode([Option].self, from: jsonData)
+              options = decodedOptions
+            } catch {
+              print("Error decoding json: \(error)")
+            }
           }
         }
+        
       }
     }
   }
