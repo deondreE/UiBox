@@ -33,7 +33,8 @@ public struct ComboBox: View {
             }
             
             if isDropdownVisible {
-                List {
+
+                VStack {
                     ForEach(options, id: \.self) { option in
                         Button(action: {
                             selectedOption = option
