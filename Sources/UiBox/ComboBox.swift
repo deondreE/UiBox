@@ -26,21 +26,28 @@ public struct ComboBox: View {
             Text("Selected Option: \(selectedOption?.name ?? "")")
                 .padding()
             
-            Picker("Options", selection: $selectedOption) {
-                ForEach(options) {option in
-                    Text(option.name).tag(option)
-                }
-            }
-            .pickerStyle(MenuPickerStyle())
-            .padding()
-            .onAppear {
-                if let jsonData = jsonString.data(using: .utf8) {
-                    do {
-                        let decodedOptions = try JSONDecoder().decode([Option].self, from: jsonData)
-                        options = decodedOptions
-                    } catch {
-                        print("Error decoding json: \(error)")
+            VStack {
+                Label("Options", systemImage: "arrowtriangle.down.fill")
+                    .font(.title3)
+                    .foregroundStyle(.blue)
+                    .padding()
+                
+                Picker("Options", selection: $selectedOption) {
+                    ForEach(options) {option in
+                        Text(option.name).tag(option)
                     }
+                }
+                .pickerStyle(MenuPickerStyle())
+                .padding()
+            }
+        }
+        .onAppear {
+            if let jsonData = jsonString.data(using: .utf8) {
+                do {
+                    let decodedOptions = try JSONDecoder().decode([Option].self, from: jsonData)
+                    options = decodedOptions
+                } catch {
+                    print("Error decoding json: \(error)")
                 }
             }
         }
