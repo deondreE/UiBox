@@ -7,18 +7,58 @@
 
 import SwiftUI
 
+// Option inside the of Combobox.
 @available(iOS 17.0, macOS 14.0, *)
-struct Option: Identifiable, Codable, Hashable {
-  var id: Int
-  var name: String
+public struct Option: Identifiable, Codable, Hashable {
+  public var id: Int
+  public var name: String
+}
+
+// Search efforts.
+@available(iOS 17.0, macOS 14.0, *)
+public struct ComboSearchBar: View {
+  @State private var searchText: String = ""
+  @State private var filteredOptions: [Option] = []
+  @Binding private var options: [Option]
+  
+  public init(options: Binding<[Option]>) {
+    self._options =  options
+  }
+  
+  public var body: some View {
+    TextField("Search", text: $searchText)
+      .padding(.top)
+      .padding(.horizontal, 2)
+      .padding(.vertical, 2)
+      .background(
+        Rectangle()
+          .fill(Color.black)
+          .stroke(Color.gray, lineWidth: 1)
+      )
+      .foregroundStyle(.white)
+      .textInputAutocapitalization(.never)
+      .disableAutocorrection(true)
+      .onChange(of: searchText) {
+        if searchText != "" {
+          filterOptions()
+        }
+      }
+  }
+  
+  // filter the search options, so that they are inorder.
+  private func filterOptions() {
+    if searchText.isEmpty {
+      filteredOptions = options
+    } else {
+      filteredOptions = options.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+    }
+  }
 }
 
 @available(iOS 17.0, macOS 14.0, *)
 public struct ComboBox: View {
   @State private var selectedOption: Option?
   @State private var options: [Option] = []
-  @State private var filteredOptions: [Option] = []
-  @State private var searchText: String = ""
   @State private var isDropdownVisible: Bool = false
   @State private var contentHeight: CGFloat = 0
   @State private var buttonPosition: CGPoint = .zero
@@ -45,23 +85,7 @@ public struct ComboBox: View {
       Group {
         if isDropdownVisible {
           VStack {
-            TextField("Search", text: $searchText)
-              .padding(.top)
-              .padding(.horizontal, 2)
-              .padding(.vertical, 2)
-              .background(
-                Rectangle()
-                  .fill(Color.black)
-                  .stroke(Color.gray, lineWidth: 1)
-              )
-              .foregroundStyle(.white)
-              .textInputAutocapitalization(.never)
-              .disableAutocorrection(true)
-              .onChange(of: searchText) {
-                if searchText != "" {
-                  filterOptions()
-                }
-              }
+            ComboSearchBar(options: $options)
 
             // If there is a larger dataset;
             ForEach(options, id: \.id) { option in
@@ -108,16 +132,7 @@ public struct ComboBox: View {
       }
     }
   }
-
-  // filter the search options, so that they are inorder.
-  private func filterOptions() {
-    if searchText.isEmpty {
-      filteredOptions = options
-    } else {
-      filteredOptions = options.filter { $0.name.lowercased().contains(searchText.lowercased()) }
-    }
-  }
-
+  
   // Height of the current objects, with the addition to the core object.
   private struct HeightPreferenceKey: PreferenceKey {
     static var defaultValue: CGFloat = 0
