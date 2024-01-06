@@ -15,7 +15,6 @@ struct Option: Identifiable, Codable, Hashable {
 @available(iOS 17.0, macOS 14.0, *)
 public struct ComboBox: View {
     @State private var selectedOption: Option?
-    @State private var toggle: Bool
     @State private var options: [Option] = []
     
     public var body: some View {
