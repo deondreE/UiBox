@@ -45,3 +45,16 @@ public struct FormPassword: View {
         )
     }
 }
+
+@available(iOS 17.0, macOS 14.0, *)
+public struct Checkbox: View {
+    @Binding private var checked: Bool
+    
+    public init(checked: Binding<Bool>) {
+        self._checked = checked
+    }
+    
+    public var body: some View {
+        Toggle("Testing Toggle", isOn: $checked)
+    }
+}
