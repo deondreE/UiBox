@@ -38,10 +38,13 @@ public struct ComboBox: View {
                     VStack {
                         TextField("Search", text: $searchText)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .padding(.horizontal)
+                            .padding(.top)
+                            .background(.black)
+                            .foregroundStyle(.white)
                             .onChange(of: searchText) { _ in
                                     filterOptions()
                             }
+                            
                         
                         ForEach(options, id: \.self) { option in
                             Button(action: {
