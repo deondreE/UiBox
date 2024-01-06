@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(iOS 17.0, macOS 14.0, *)
-struct CalendarView: View {
+public struct CalendarView: View {
     @State private var month: Date
     @State private var selectedDate: Date?
     
@@ -16,7 +16,7 @@ struct CalendarView: View {
         _month = State(initialValue: Date())
     }
     
-    var body: some View {
+    public var body: some View {
         VStack {
             headerView
             daysGridView
@@ -57,10 +57,10 @@ struct CalendarView: View {
 }
 
 @available(iOS 17.0, macOS 14.0, *)
-struct DayView: View {
+public struct DayView: View {
     let day: Date
 
-    var body: some View {
+    public var body: some View {
         Text("\(day, formatter: DateFormatter.dayFormatter)")
             .frame(width: 30, height: 30)
             .background(day == Date() ? Color.blue : Color.clear)
@@ -70,7 +70,7 @@ struct DayView: View {
 }
 
 @available(iOS 17.0, macOS 14.0, *)
-extension Date {
+public extension Date {
     func allDaysInMonth() -> [Date] {
         let calendar = Calendar.current
         let range = calendar.range(of: .day, in: .month, for: self)!
@@ -79,7 +79,7 @@ extension Date {
 }
 
 @available(iOS 17.0, macOS 14.0, *)
-extension DateFormatter {
+public extension DateFormatter {
     static let monthYearFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM yyyy"
