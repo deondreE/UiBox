@@ -64,15 +64,37 @@ public struct ComboBox: View {
               }
 
             ForEach(options, id: \.self) { option in
-              Button(action: {
-                selectedOption = option
-                isDropdownVisible.toggle()
-              }) {
-                Text(option.name)
+              if (options.count > 3) {
+                ScrollView {
+                  Button(action: {
+                    if selectedOption == option {
+                      selectedOption = Option(id: 0, name: "Select An Option")  // or set to a default option
+                    } else {
+                      selectedOption = option
+                    }
+                    isDropdownVisible.toggle()
+                  }) {
+                    Text(option.name)
+                  }
+                  .background(.black)
+                  .foregroundStyle(.white)
+                  .padding(10)
+                }
+              } else {
+                Button(action: {
+                  if selectedOption == option {
+                    selectedOption = Option(id: 0, name: "Select An Option")  // or set to a default option
+                  } else {
+                    selectedOption = option
+                  }
+                  isDropdownVisible.toggle()
+                }) {
+                  Text(option.name)
+                }
+                .background(.black)
+                .foregroundStyle(.white)
+                .padding(10)
               }
-              .background(.black)
-              .foregroundStyle(.white)
-              .padding(10)
             }
           }
           .onPreferenceChange(HeightPreferenceKey.self) {
@@ -88,7 +110,7 @@ public struct ComboBox: View {
           // .frame(maxWidth: 250, maxHeight: 165, alignment: .topLeading)
           .frame(height: contentHeight)
           .padding(.horizontal)
-          .position(x: buttonPosition.x + 50, y: buttonPosition.y + contentHeight + 100)
+          .position(x: buttonPosition.x + 150, y: buttonPosition.y + contentHeight + 100)
         }
       }
       .onAppear {
@@ -136,7 +158,10 @@ public struct ComboBox: View {
     [
         {"id": 1, "name": "Option 1"},
         {"id": 2, "name": "Option 2"},
-        {"id": 3, "name": "Option 3"}
+        {"id": 3, "name": "Option 3"},
+        {"id": 4, "name": "Option 4"},
+        {"id": 5, "name": "Option 5"},
+        {"id": 6, "name": "Option 6"},
     ]
     """
 }
