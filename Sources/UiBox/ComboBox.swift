@@ -86,13 +86,13 @@ public struct ComboBox: View {
             .padding(.horizontal)
             .position(x: buttonPosition.x + geometry.size.width / 2, y: buttonPosition.y + geometry.size.height + contentHeight / 2 + 10)
           }
-          .background(
-            RoundedRectangle(cornerRadius: 10)
-              .fill(Color.black)
-              .stroke(Color.gray, lineWidth: 1)
-          )
         }
       }
+      .background(
+        RoundedRectangle(cornerRadius: 10)
+          .fill(Color.black)
+          .stroke(Color.gray, lineWidth: 1)
+      )
       .onAppear {
         if let jsonData = jsonString.data(using: .utf8) {
           do {
@@ -124,6 +124,7 @@ public struct ComboBox: View {
     }
   }
   
+  // Return the CGPoint of where the button is located.
   private struct ButtonPositionPreferenceKey: PreferenceKey {
     static var defaultValue: CGPoint = .zero
     
