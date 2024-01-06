@@ -65,7 +65,11 @@ public struct ComboBox: View {
 
             ForEach(options, id: \.self) { option in
               Button(action: {
-                selectedOption = option
+                if selectedOption == option {
+                  selectedOption = Option(id: 0, name: "Select An Option")  // or set to a default option
+                } else {
+                  selectedOption = option
+                }
                 isDropdownVisible.toggle()
               }) {
                 Text(option.name)
@@ -88,7 +92,7 @@ public struct ComboBox: View {
           // .frame(maxWidth: 250, maxHeight: 165, alignment: .topLeading)
           .frame(height: contentHeight)
           .padding(.horizontal)
-          .position(x: buttonPosition.x + 50, y: buttonPosition.y + contentHeight + 100)
+          .position(x: buttonPosition.x + 150, y: buttonPosition.y + contentHeight + 100)
         }
       }
       .onAppear {
