@@ -88,7 +88,7 @@ public struct ComboBox: View {
           // .frame(maxWidth: 250, maxHeight: 165, alignment: .topLeading)
           .frame(height: contentHeight)
           .padding(.horizontal)
-          .position(x: buttonPosition.x, y: buttonPosition.y + contentHeight + 10)
+          .position(x: buttonPosition.x + 50, y: buttonPosition.y + contentHeight + 100)
         }
       }
       .onAppear {
