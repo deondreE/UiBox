@@ -7,9 +7,6 @@
 
 import SwiftUI
 
-// TODO: Add an info overlay.
-// TODO: Allow users to create events on the calendar.
-
 @available(iOS 17.0, macOS 14.0, *)
 public struct CalendarView: View {
     @State private var month: Date

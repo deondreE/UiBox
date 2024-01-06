@@ -8,7 +8,7 @@ Component library for mobile devices.
 -   [x] Error box.
 -   [x] Progress bar.
 -   [x] Alert box.
--   [ ] Calendar.
+-   [x] Calendar.
 -   [x] Container.
 -   [ ] Purchase Container.
 -   [x] Avatar.
