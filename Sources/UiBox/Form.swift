@@ -46,15 +46,35 @@ public struct FormPassword: View {
     }
 }
 
+public struct CheckboxStyle: ToggleStyle {
+    public func makeBody(configuration: Configuration) -> some View {
+        Image(systemName: configuration.isOn ? "checkmark.square" : "square")
+            .resizable()
+            .frame(width: 24, height: 24)
+            .foregroundStyle(configuration.isOn ? .blue : .gray)
+            .onTapGesture {
+                configuration.isOn.toggle()
+            }
+        
+        configuration.label
+    }
+}
+
 @available(iOS 17.0, macOS 14.0, *)
 public struct Checkbox: View {
-    @Binding private var checked: Bool
+    @Binding private var isOn: Bool
+    private var labelText: String
     
-    public init(checked: Binding<Bool>) {
-        self._checked = checked
+    public init(labelText: String, isOn: Binding<Bool>) {
+        self._isOn = isOn
+        self.labelText = labelText
     }
     
     public var body: some View {
-        Toggle("Testing Toggle", isOn: $checked)
+        VStack {
+            Toggle(labelText, isOn: $isOn)
+                .toggleStyle(CheckboxStyle())
+                .padding()
+        }
     }
 }
