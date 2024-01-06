@@ -41,56 +41,54 @@ public struct ComboBox: View {
             .preference(key: ButtonPositionPreferenceKey.self, value: $0.frame(in: .global).origin)
         }
       )
-      
+
       Group {
         if isDropdownVisible {
-          GeometryReader { geometry in
-            VStack {
-              TextField("Search", text: $searchText)
-                .padding(.top)
-                .padding(.horizontal, 2)
-                .padding(.vertical, 2)
-                .background(
-                  Rectangle()
-                    .fill(Color.black)
-                    .stroke(Color.gray, lineWidth: 1)
-                )
-                .foregroundStyle(.white)
-                .textInputAutocapitalization(.never)
-                .disableAutocorrection(true)
-                .onChange(of: searchText) {
-                  if searchText != "" {
-                    filterOptions()
-                  }
+          VStack {
+            TextField("Search", text: $searchText)
+              .padding(.top)
+              .padding(.horizontal, 2)
+              .padding(.vertical, 2)
+              .background(
+                Rectangle()
+                  .fill(Color.black)
+                  .stroke(Color.gray, lineWidth: 1)
+              )
+              .foregroundStyle(.white)
+              .textInputAutocapitalization(.never)
+              .disableAutocorrection(true)
+              .onChange(of: searchText) {
+                if searchText != "" {
+                  filterOptions()
                 }
-
-              ForEach(options, id: \.self) { option in
-                Button(action: {
-                  selectedOption = option
-                  isDropdownVisible.toggle()
-                }) {
-                  Text(option.name)
-                }
-                .background(.black)
-                .foregroundStyle(.white)
-                .padding(10)
               }
+
+            ForEach(options, id: \.self) { option in
+              Button(action: {
+                selectedOption = option
+                isDropdownVisible.toggle()
+              }) {
+                Text(option.name)
+              }
+              .background(.black)
+              .foregroundStyle(.white)
+              .padding(10)
             }
-            .onPreferenceChange(HeightPreferenceKey.self) {
-              contentHeight = $0
-            }
-            .background(
-              RoundedRectangle(cornerRadius: 10)
-                .fill(Color.black)
-                .stroke(Color.gray, lineWidth: 1)
-            )
-            .cornerRadius(8)
-            .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
-            // .frame(maxWidth: 250, maxHeight: 165, alignment: .topLeading)
-            .frame(height: contentHeight > geometry.size.height ? geometry.size.height : contentHeight)
-            .padding(.horizontal)
-            .position(x: buttonPosition.x + geometry.size.width / 2, y: buttonPosition.y + geometry.size.height + contentHeight + 10)
           }
+          .onPreferenceChange(HeightPreferenceKey.self) {
+            contentHeight = $0
+          }
+          .background(
+            RoundedRectangle(cornerRadius: 10)
+              .fill(Color.black)
+              .stroke(Color.gray, lineWidth: 1)
+          )
+          .cornerRadius(8)
+          .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
+          // .frame(maxWidth: 250, maxHeight: 165, alignment: .topLeading)
+          .frame(height: contentHeight)
+          .padding(.horizontal)
+          .position(x: buttonPosition.x, y: buttonPosition.y + contentHeight + 10)
         }
       }
       .onAppear {
@@ -114,25 +112,25 @@ public struct ComboBox: View {
       filteredOptions = options.filter { $0.name.lowercased().contains(searchText.lowercased()) }
     }
   }
-  
+
   // Height of the current objects, with the addition to the core object.
   private struct HeightPreferenceKey: PreferenceKey {
     static var defaultValue: CGFloat = 0
-    
+
     static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-      value  =  max(value, nextValue())
+      value = max(value, nextValue())
     }
   }
-  
+
   // Return the CGPoint of where the button is located.
   private struct ButtonPositionPreferenceKey: PreferenceKey {
     static var defaultValue: CGPoint = .zero
-    
+
     static func reduce(value: inout CGPoint, nextValue: () -> CGPoint) {
       value = nextValue()
     }
   }
-  
+
   // Simulated JSON data
   let jsonString = """
     [
