@@ -49,7 +49,7 @@ public struct ComboBox: View {
                 }
                 .cornerRadius(8)
                 .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                .frame(maxWidth: .infinity, maxHeight: 200, alignment: .topLeading)
                 .padding(.horizontal)
             }
         }
