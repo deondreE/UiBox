@@ -24,7 +24,7 @@ public struct CalendarView: View {
                 .padding(.vertical)
         }
         .padding()
-        .background(Color(UIColor.systemBackground))
+        .background(Color.black)
         .cornerRadius(20)
         .shadow(radius: 10)
     }
@@ -71,7 +71,7 @@ public struct DayView: View {
         Text("\(day, formatter: DateFormatter.dayFormatter)")
             .frame(width: 30, height: 30)
             .background(day == Date() ? Color.blue : Color.clear)
-            .foregroundStyle(day.isInWeekend() ? .red : .primary)
+            .foregroundStyle(day.isInWeekend() ? Color.gray : Color.white)
             .cornerRadius(15)
             .padding(5)
     }
