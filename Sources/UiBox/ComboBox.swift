@@ -42,9 +42,9 @@ public struct ComboBox: View {
                         }) {
                             Text(option.name)
                         }
-                        .background(
-                            .black
-                        )
+                        .background(.black)
+                        .foregroundStyle(.white)
+                        .padding(10)
                     }
                 }
                 .cornerRadius(8)
