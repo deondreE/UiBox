@@ -45,8 +45,13 @@ public struct ComboBox: View {
                                     .fill(Color.black)
                                     .stroke(Color.gray, lineWidth: 1)
                             )
-                            .onChange(of: searchText) { _ in
+                            .foregroundStyle(.white)
+                            .textInputAutocapitalization(.never)
+                            .disableAutocorrection(true)
+                            .onChange(of: searchText) {
+                                if searchText != "" {
                                     filterOptions()
+                                }
                             }
                             
                         
