@@ -43,9 +43,10 @@ public struct ComboBox: View {
                         }
                     }
                 }
-                .frame(maxHeight: 150)
                 .cornerRadius(8)
                 .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
+                .padding(.horizontal)
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
         .onAppear {
