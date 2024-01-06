@@ -12,6 +12,9 @@ public struct CalendarView: View {
     @State private var month: Date
     @State private var selectedDate: Date?
     
+    // test
+    let highlightedDays: [Int]  = [7, 14, 21, 28]
+    
     public init() {
         _month = State(initialValue: Date())
     }
@@ -54,7 +57,7 @@ public struct CalendarView: View {
     private var daysGridView: some View {
         LazyVGrid(columns: Array(repeating: GridItem(), count: 7), spacing: 10) {
             ForEach(month.allDaysInMonth(), id: \.self) { day in
-                DayView(day: day)
+                DayView(day: day, isHighlighted: highlightedDays.contains(Calendar.current.component(.day, from: day)))
                     .onTapGesture {
                         self.selectedDate = day
                     }
