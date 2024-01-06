@@ -63,7 +63,7 @@ public struct ComboBox: View {
                         }
                         .cornerRadius(8)
                         .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
-                        .frame(maxWidth: 250, maxHeight: 265, alignment: .topLeading)
+                        .frame(maxWidth: 250, maxHeight: 165, alignment: .topLeading)
                         .background(
                             RoundedRectangle(cornerRadius: 10)
                                 .fill(Color.black)
