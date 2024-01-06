@@ -75,13 +75,14 @@ public struct ComboBox: View {
             .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
             // .frame(maxWidth: 250, maxHeight: 165, alignment: .topLeading)
             .frame(height: contentHeight > geometry.size.height ? geometry.size.height : contentHeight)
-            .background(
-              RoundedRectangle(cornerRadius: 10)
-                .fill(Color.black)
-                .stroke(Color.gray, lineWidth: 1)
-            )
             .padding(.horizontal)
+            .position(x: geometry.size.width / 2, y: geometry.size.height + contentHeight / 2)
           }
+          .background(
+            RoundedRectangle(cornerRadius: 10)
+              .fill(Color.black)
+              .stroke(Color.gray, lineWidth: 1)
+          )
         }
       }
       .onAppear {
