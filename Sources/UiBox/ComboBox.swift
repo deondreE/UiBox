@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+
 @available(iOS 17.0, macOS 14.0, *)
 struct Option: Identifiable, Codable, Hashable {
     var id: Int
@@ -16,6 +17,10 @@ struct Option: Identifiable, Codable, Hashable {
 public struct ComboBox: View {
     @State private var selectedOption: Option?
     @State private var options: [Option] = []
+    
+    public init() {
+        
+    }
     
     public var body: some View {
         VStack {
