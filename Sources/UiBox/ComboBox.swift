@@ -15,11 +15,8 @@ struct Option: Identifiable, Codable, Hashable {
 @available(iOS 17.0, macOS 14.0, *)
 public struct ComboBox: View {
     @State private var selectedOption: Option?
+    @State private var toggle: Bool = false
     @State private var options: [Option] = []
-    
-    public init() {
-        
-    }
     
     public var body: some View {
         VStack {
@@ -29,17 +26,17 @@ public struct ComboBox: View {
                 Text(selectedOption?.name ?? "Select an option")
                     .foregroundStyle(.black)
             }
-            
-            
-            VStack {
-                Picker("Options", selection: $selectedOption) {
-                    ForEach(options) {option in
+            .overlay(
+                VStack {
+                    ForEach(options, id:\.self) {option in
                         Text(option.name).tag(option)
                     }
+                    .padding()
                 }
-                .pickerStyle(MenuPickerStyle())
-                .padding()
-            }
+            )
+            
+            
+          
         }
         .onAppear {
             if let jsonData = jsonString.data(using: .utf8) {
