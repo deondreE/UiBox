@@ -32,12 +32,19 @@ public struct ComboBox: View {
             }
             .overlay(
                 VStack {
-                    ForEach(options, id:\.self) {option in
-                        Text(option.name).tag(option)
-                    }
-                    .padding()
+                   Picker("", selection: $selectedOption) {
+                       ForEach(options, id: \.self) { option in
+                           Text(option.name).tag(option)
+                       }
+                   }
+                   .labelsHidden()
+                   .pickerStyle(MenuPickerStyle())
+                   .padding()
                 }
-                    .labelsHidden()
+               .frame(maxWidth: .infinity)
+               .background(Color.white)
+               .cornerRadius(8)
+               .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
             )
             
             
