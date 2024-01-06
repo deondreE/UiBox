@@ -46,6 +46,8 @@ public struct ComboBox: View {
                 .cornerRadius(8)
                 .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
                 .padding(.horizontal)
+                .foregroundStyle(.white)
+                .background(.black)
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
