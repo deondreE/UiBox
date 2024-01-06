@@ -41,6 +41,9 @@ public struct ComboBox: View {
                         }) {
                             Text(option.name)
                         }
+                        .background(
+                            .black
+                        )
                     }
                 }
                 .cornerRadius(8)
