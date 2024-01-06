@@ -21,6 +21,7 @@ public struct ComboBox: View {
   @State private var searchText: String = ""
   @State private var isDropdownVisible: Bool = false
   @State private var contentHeight: CGFloat = 0
+  @State private var buttonPosition: CGPoint = .zero
 
   public init() {
 
@@ -34,6 +35,13 @@ public struct ComboBox: View {
         Text(selectedOption?.name ?? "Select an option")
           .foregroundStyle(.black)
       }
+      .background(
+        GeometryReader {
+          Color.clear
+            .preference(key: ButtonPositionPreferenceKey.self, value: $0.frame(in: .global).origin)
+        }
+      )
+      
       Group {
         if isDropdownVisible {
           GeometryReader { geometry in
@@ -76,7 +84,7 @@ public struct ComboBox: View {
             // .frame(maxWidth: 250, maxHeight: 165, alignment: .topLeading)
             .frame(height: contentHeight > geometry.size.height ? geometry.size.height : contentHeight)
             .padding(.horizontal)
-            .position(x: geometry.size.width / 2, y: geometry.size.height + contentHeight / 2)
+            .position(x: buttonPosition.x + geometry.size.width / 2, y: buttonPosition.y + geometry.size.height + contentHeight / 2 + 10)
           }
           .background(
             RoundedRectangle(cornerRadius: 10)
@@ -113,6 +121,14 @@ public struct ComboBox: View {
     
     static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
       value  =  max(value, nextValue())
+    }
+  }
+  
+  private struct ButtonPositionPreferenceKey: PreferenceKey {
+    static var defaultValue: CGPoint = .zero
+    
+    static func reduce(value: inout CGPoint, nextValue: () -> CGPoint) {
+      value = nextValue()
     }
   }
   
