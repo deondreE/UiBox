@@ -57,14 +57,18 @@ public struct ComboSearchBar: View {
 
 @available(iOS 17.0, macOS 14.0, *)
 public struct ComboBox: View {
+  // defaults
   @State private var selectedOption: Option?
   @State private var options: [Option] = []
   @State private var isDropdownVisible: Bool = false
   @State private var contentHeight: CGFloat = 0
   @State private var buttonPosition: CGPoint = .zero
-
-  public init() {
-
+  
+  // init variables.
+  private var dataString: String
+  
+  public init(dataString: String) {
+    self.dataString = dataString
   }
 
   public var body: some View {
@@ -121,9 +125,9 @@ public struct ComboBox: View {
         }
       }
       .onAppear {
-        if let jsonData = jsonString.data(using: .utf8) {
+        if let jsonData = self.dataString.data(using: .utf8) {
           do {
-            let decodedOptions = try JSONDecoder().decode([Option].self, from: jsonData)
+            let decodedOptions = try JSONDecoder().decode([Option].self, from: self.dataString)
             options = decodedOptions
           } catch {
             print("Error decoding json: \(error)")
@@ -150,16 +154,4 @@ public struct ComboBox: View {
       value = nextValue()
     }
   }
-
-  // Simulated JSON data
-  let jsonString = """
-    [
-        {"id": 1, "name": "Option 1"},
-        {"id": 2, "name": "Option 2"},
-        {"id": 3, "name": "Option 3"},
-        {"id": 4, "name": "Option 4"},
-        {"id": 5, "name": "Option 5"},
-        {"id": 6, "name": "Option 6"}
-    ]
-    """
 }
