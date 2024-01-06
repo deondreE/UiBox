@@ -75,7 +75,7 @@ public struct DayView: View {
         Text("\(day, formatter: DateFormatter.dayFormatter)")
             .frame(width: 30, height: 30)
             .background(isHighlighted ? Color.gray : (day == Date() ? Color.blue : Color.clear))
-            .foregroundStyle(day.isInWeekend() ? Color.gray : Color.white)
+            .foregroundStyle(isHighlighted ? Color.white : (day.isInWeekend() ? Color.gray : Color.white))
             .cornerRadius(15)
             .padding(5)
     }
