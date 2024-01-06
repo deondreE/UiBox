@@ -38,11 +38,12 @@ public struct ComboBox: View {
                     VStack {
                         TextField("Search", text: $searchText)
                             .padding(.top)
+                            .padding(.horizontal)
+                            .padding(.vertical)
                             .background(
                                 Rectangle()
                                     .fill(Color.black)
                                     .stroke(Color.gray, lineWidth: 1)
-                                    .padding(4)
                             )
                             .onChange(of: searchText) { _ in
                                     filterOptions()
