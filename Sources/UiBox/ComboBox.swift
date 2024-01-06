@@ -64,22 +64,20 @@ public struct ComboBox: View {
               }
 
             // If there is a larger dataset;
-            ScrollView {
-              ForEach(options, id: \.id) { option in
-                Button(action: {
-                  if selectedOption == option {
-                    selectedOption = Option(id: 0, name: "Select An Option")  // or set to a default option
-                  } else {
-                    selectedOption = option
-                  }
-                  isDropdownVisible.toggle()
-                }) {
-                  Text(option.name)
+            ForEach(options, id: \.id) { option in
+              Button(action: {
+                if selectedOption == option {
+                  selectedOption = Option(id: 0, name: "Select An Option")  // or set to a default option
+                } else {
+                  selectedOption = option
                 }
-                .background(.black)
-                .foregroundStyle(.white)
-                .padding(10)
+                isDropdownVisible.toggle()
+              }) {
+                Text(option.name)
               }
+              .background(.black)
+              .foregroundStyle(.white)
+              .padding(10)
             }
           }
           .onPreferenceChange(HeightPreferenceKey.self) {
