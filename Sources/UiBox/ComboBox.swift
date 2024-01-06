@@ -68,6 +68,9 @@ public struct ComboBox: View {
                 .padding(10)
               }
             }
+            .onPreferenceChange(HeightPreferenceKey.self) {
+              contentHeight = $0
+            }
             .cornerRadius(8)
             .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
             .frame(maxWidth: 250, maxHeight: 165, alignment: .topLeading)
@@ -94,6 +97,7 @@ public struct ComboBox: View {
     }
   }
 
+  // filter the search options, so that they are inorder.
   private func filterOptions() {
     if searchText.isEmpty {
       filteredOptions = options
@@ -101,6 +105,16 @@ public struct ComboBox: View {
       filteredOptions = options.filter { $0.name.lowercased().contains(searchText.lowercased()) }
     }
   }
+  
+  // Height of the current objects, with the addition to the core object.
+  private struct HeightPreferenceKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+    
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+      value  =  max(value, nextValue())
+    }
+  }
+  
   // Simulated JSON data
   let jsonString = """
     [
