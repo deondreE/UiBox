@@ -37,6 +37,7 @@ public struct ComboBox: View {
                     }
                     .padding()
                 }
+                    .labelsHidden()
             )
             
             
