@@ -66,7 +66,7 @@ public struct ComboBox: View {
             // If there is a larger dataset;
             if options.count > 3 {
               ScrollView {
-                ForEach(options, id: \.self) { option in
+                ForEach(options, id: \.id) { option in
                   Button(action: {
                     if selectedOption == option {
                       selectedOption = Option(id: 0, name: "Select An Option")  // or set to a default option
@@ -83,7 +83,7 @@ public struct ComboBox: View {
                 }
               }
             } else {
-              ForEach(options, id: \.self) { option in
+              ForEach(options, id: \.id) { option in
                 Button(action: {
                   if selectedOption == option {
                     selectedOption = Option(id: 0, name: "Select An Option")  // or set to a default option
