@@ -15,7 +15,7 @@ Component library for mobile devices.
 -   [ ] Image.
 -   [ ] Form.
 -   [ ] DataTable.
--   [ ] Checkbox.
+-   [x] Checkbox.
 
 # Setup for contributing.
 
