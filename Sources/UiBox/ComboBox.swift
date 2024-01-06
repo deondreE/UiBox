@@ -39,7 +39,7 @@ public struct ComboBox: View {
                         TextField("Search", text: $searchText)
                             .padding(.top)
                             .background(
-                                RoundedRectangle(cornerRadius: 10)
+                                Rectangle()
                                     .fill(Color.black)
                                     .stroke(Color.gray, lineWidth: 1)
                             )
