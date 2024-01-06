@@ -17,6 +17,7 @@ struct Option: Identifiable, Codable, Hashable {
 public struct ComboBox: View {
     @State private var selectedOption: Option?
     @State private var options: [Option] = []
+    @State private var isDropdownVisible: Bool = false
     
     public init() {
         
@@ -25,30 +26,27 @@ public struct ComboBox: View {
     public var body: some View {
         VStack {
             Button(action: {
-                
+                isDropdownVisible.toggle()
             }) {
                 Text(selectedOption?.name ?? "Select an option")
                     .foregroundStyle(.black)
             }
-            .overlay(
-                VStack {
-                   Picker("", selection: $selectedOption) {
-                       ForEach(options, id: \.self) { option in
-                           Text(option.name).tag(option)
-                       }
-                   }
-                   .labelsHidden()
-                   .pickerStyle(MenuPickerStyle())
-                   .padding()
+            
+            if isDropdownVisible {
+                List {
+                    ForEach(options, id: \.self) { option in
+                        Button(action: {
+                            selectedOption = option
+                            isDropdownVisible.toggle()
+                        }) {
+                            Text(option.name)
+                        }
+                    }
                 }
-               .frame(maxWidth: .infinity)
-               .background(Color.white)
-               .cornerRadius(8)
-               .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
-            )
-            
-            
-          
+                .frame(maxHeight: 150)
+                .cornerRadius(8)
+                .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
+            }
         }
         .onAppear {
             if let jsonData = jsonString.data(using: .utf8) {
