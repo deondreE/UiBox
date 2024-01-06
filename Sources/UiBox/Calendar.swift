@@ -19,9 +19,14 @@ public struct CalendarView: View {
     public var body: some View {
         VStack {
             headerView
+                .padding(.top, 20)
             daysGridView
+                .padding(.vertical)
         }
         .padding()
+        .background(Color(UIColor.systemBackground))
+        .cornerRadius(20)
+        .shadow(radius: 10)
     }
     
     private var headerView: some View {
@@ -30,22 +35,24 @@ public struct CalendarView: View {
                 self.month = Calendar.current.date(byAdding: .month, value: -1, to: self.month) ?? self.month
             }) {
                 Image(systemName: "chevron.left")
+                    .font(.title)
             }
             
             Text("\(month, formatter: DateFormatter.monthYearFormatter)")
+                .font(.headline)
             
             Button(action: {
                 self.month = Calendar.current.date(byAdding: .month, value: 1, to: self.month) ?? self.month
             }) {
-                Image(systemName: "chevron.right")
+                Image(systemName: "chevron.right.circle.fill")
+                    .font(.title)
             }
          }
-        .font(.headline)
-        .padding(.vertical)
+        .foregroundStyle(Color.black)
     }
     
     private var daysGridView: some View {
-        VStack {
+        LazyVGrid(columns: Array(repeating: GridItem(), count: 7), spacing: 10) {
             ForEach(month.allDaysInMonth(), id: \.self) { day in
                 DayView(day: day)
                     .onTapGesture {
@@ -64,6 +71,7 @@ public struct DayView: View {
         Text("\(day, formatter: DateFormatter.dayFormatter)")
             .frame(width: 30, height: 30)
             .background(day == Date() ? Color.blue : Color.clear)
+            .foregroundStyle(day.isInWekeend() ? .red : .primary)
             .cornerRadius(15)
             .padding(5)
     }
@@ -75,6 +83,11 @@ public extension Date {
         let calendar = Calendar.current
         let range = calendar.range(of: .day, in: .month, for: self)!
         return range.map { calendar.date(bySetting: .day, value: $0, of: self)! }
+    }
+    
+    func isInWeekend() -> Bool {
+        let calendar = Calendar.current
+        return calendar.isDateInWeekend(self)
     }
 }
 
