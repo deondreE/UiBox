@@ -65,9 +65,9 @@ public struct ComboBox: View {
   @State private var buttonPosition: CGPoint = .zero
   
   // init variables.
-  private var dataString: String
+  private var dataString: Data
   
-  public init(dataString: String) {
+  public init(dataString: Data) {
     self.dataString = dataString
   }
 
