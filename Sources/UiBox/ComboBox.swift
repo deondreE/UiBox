@@ -23,15 +23,15 @@ public struct ComboBox: View {
     
     public var body: some View {
         VStack {
-            Text("Selected Option: \(selectedOption?.name ?? "")")
-                .padding()
+            Button(action: {
+                
+            }) {
+               g Text(selectedOption?.name ?? "Select an option")
+                    .foregroundStyle(.black)
+            }
+            
             
             VStack {
-                Label("Options", systemImage: "arrowtriangle.down.fill")
-                    .font(.title3)
-                    .foregroundStyle(.blue)
-                    .padding()
-                
                 Picker("Options", selection: $selectedOption) {
                     ForEach(options) {option in
                         Text(option.name).tag(option)
