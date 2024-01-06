@@ -84,7 +84,7 @@ public struct ComboBox: View {
             // .frame(maxWidth: 250, maxHeight: 165, alignment: .topLeading)
             .frame(height: contentHeight > geometry.size.height ? geometry.size.height : contentHeight)
             .padding(.horizontal)
-            .position(x: buttonPosition.x + geometry.size.width / 2, y: buttonPosition.y + geometry.size.height + contentHeight / 2 + 10)
+            .position(x: buttonPosition.x + geometry.size.width / 2, y: buttonPosition.y + geometry.size.height + contentHeight / 4 + 10)
           }
         }
       }
