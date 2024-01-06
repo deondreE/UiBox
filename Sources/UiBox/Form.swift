@@ -46,6 +46,7 @@ public struct FormPassword: View {
     }
 }
 
+@available(iOS 17.0, macOS 14.0, *)
 public struct CheckboxStyle: ToggleStyle {
     public func makeBody(configuration: Configuration) -> some View {
         Image(systemName: configuration.isOn ? "checkmark.square" : "square")
