@@ -9,8 +9,9 @@ import SwiftUI
 
 @available(iOS 17.0, macOS 14.0, *)
 public struct ComboBox: View {
-    @State private var selectedOption: String = "Option 1"
-    private let options = ["Option 1", "Option 2", "Option 2"]
+    @State public  var selectedOption: String = "Option 1"
+    public  let options = ["Option 1", "Option 2", "Option 2"]
+    
     public var body: some View {
         VStack {
             Text("Selected Option: \(selectedOption)")
