@@ -56,7 +56,7 @@ public struct CalendarView: View {
     private var daysGridView: some View {
         LazyVGrid(columns: Array(repeating: GridItem(), count: 7), spacing: 10) {
             ForEach(month.allDaysInMonth(), id: \.self) { day in
-                DayView(day: day, isHighlighted: highlightedDays.contains(day.toString()))
+                DayView(day: day, isHighlighted: highlightedDays.contains(String(Calendar.current.component(.day, from: day))))
                     .onTapGesture {
                         self.selectedDate = day
                         self.toggleHighlight(day)
@@ -101,12 +101,6 @@ public extension Date {
     func isInWeekend() -> Bool {
         let calendar = Calendar.current
         return calendar.isDateInWeekend(self)
-    }
-                    
-    func toString() -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter.string(from: self)
     }
 }
 
