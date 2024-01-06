@@ -42,6 +42,7 @@ public struct ComboBox: View {
                                 Rectangle()
                                     .fill(Color.black)
                                     .stroke(Color.gray, lineWidth: 1)
+                                    .padding(4)
                             )
                             .onChange(of: searchText) { _ in
                                     filterOptions()
@@ -62,7 +63,7 @@ public struct ComboBox: View {
                         }
                         .cornerRadius(8)
                         .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
-                        .frame(maxWidth: 220, maxHeight: 150, alignment: .topLeading)
+                        .frame(maxWidth: 250, maxHeight: 265, alignment: .topLeading)
                         .background(
                             RoundedRectangle(cornerRadius: 10)
                                 .fill(Color.black)
@@ -71,7 +72,7 @@ public struct ComboBox: View {
                         .padding(.horizontal)
                 }
             }
-            .frame(maxWidth: 220, alignment: .topLeading)
+            .frame(maxWidth: 250, alignment: .topLeading)
         }
         .onAppear {
             if let jsonData = jsonString.data(using: .utf8) {
