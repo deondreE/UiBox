@@ -37,10 +37,12 @@ public struct ComboBox: View {
                 if isDropdownVisible {
                     VStack {
                         TextField("Search", text: $searchText)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
                             .padding(.top)
-                            .background(.black)
-                            .foregroundStyle(.white)
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color.black)
+                                    .stroke(Color.gray, lineWidth: 1)
+                            )
                             .onChange(of: searchText) { _ in
                                     filterOptions()
                             }
