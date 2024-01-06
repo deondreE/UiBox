@@ -12,6 +12,10 @@ public struct ComboBox: View {
     @State public  var selectedOption: String = "Option 1"
     public  let options = ["Option 1", "Option 2", "Option 2"]
     
+    public init() {
+        
+    }
+    
     public var body: some View {
         VStack {
             Text("Selected Option: \(selectedOption)")
