@@ -11,9 +11,8 @@ import SwiftUI
 public struct CalendarView: View {
     @State private var month: Date
     @State private var selectedDate: Date?
-    
-    // test
-    let highlightedDays: [Int]  = [7, 14, 21, 28]
+    @State private var highlightedDays: Set<String> = []
+
     
     public init() {
         _month = State(initialValue: Date())
@@ -57,12 +56,22 @@ public struct CalendarView: View {
     private var daysGridView: some View {
         LazyVGrid(columns: Array(repeating: GridItem(), count: 7), spacing: 10) {
             ForEach(month.allDaysInMonth(), id: \.self) { day in
-                DayView(day: day, isHighlighted: highlightedDays.contains(Calendar.current.component(.day, from: day)))
+                DayView(day: day, isHighlighted: highlightedDays.contains(day.toString()))
                     .onTapGesture {
                         self.selectedDate = day
+                        self.toggleHighlight(day)
                     }
             }
         }
+    }
+    
+    private func toggleHighlight(_ day: Date) {
+        let dayNumber = String(Calendar.current.component(.day, from: day))
+            if highlightedDays.contains(dayNumber) {
+                highlightedDays.remove(dayNumber)
+            } else {
+                highlightedDays.insert(dayNumber)
+            }
     }
 }
 
@@ -92,6 +101,12 @@ public extension Date {
     func isInWeekend() -> Bool {
         let calendar = Calendar.current
         return calendar.isDateInWeekend(self)
+    }
+                    
+    func toString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.string(from: self)
     }
 }
 
