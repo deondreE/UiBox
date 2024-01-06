@@ -48,7 +48,7 @@ public struct ComboBox: View {
                     }
                     .cornerRadius(8)
                     .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
-                    .frame(maxWidth: .infinity, maxHeight: 200, alignment: .topLeading)
+                    .frame(maxWidth: 220, maxHeight: 200, alignment: .topLeading)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color.black)
@@ -57,7 +57,7 @@ public struct ComboBox: View {
                     .padding(.horizontal)
                 }
             }
-            .frame(maxWidth: .infinity, alignment: .topLeading)
+            .frame(maxWidth: 220, alignment: .topLeading)
         }
         .onAppear {
             if let jsonData = jsonString.data(using: .utf8) {
