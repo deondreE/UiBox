@@ -26,7 +26,7 @@ public struct ComboBox: View {
             Button(action: {
                 
             }) {
-               g Text(selectedOption?.name ?? "Select an option")
+                Text(selectedOption?.name ?? "Select an option")
                     .foregroundStyle(.black)
             }
             
