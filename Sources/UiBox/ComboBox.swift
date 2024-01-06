@@ -17,6 +17,8 @@ struct Option: Identifiable, Codable, Hashable {
 public struct ComboBox: View {
     @State private var selectedOption: Option?
     @State private var options: [Option] = []
+    @State private var filteredOptions: [Option] = []
+    @State private var searchText: String = ""
     @State private var isDropdownVisible: Bool = false
     
     public init() {
@@ -34,6 +36,13 @@ public struct ComboBox: View {
             Group {
                 if isDropdownVisible {
                     VStack {
+                        TextField("Search", text: $searchText)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .padding(.horizontal)
+                            .onChange(of: searchText) { _ in
+                                    filterOptions()
+                            }
+                        
                         ForEach(options, id: \.self) { option in
                             Button(action: {
                                 selectedOption = option
@@ -44,17 +53,17 @@ public struct ComboBox: View {
                             .background(.black)
                             .foregroundStyle(.white)
                             .padding(10)
+                            }
                         }
-                    }
-                    .cornerRadius(8)
-                    .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
-                    .frame(maxWidth: 220, maxHeight: 150, alignment: .topLeading)
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.black)
-                            .stroke(Color.gray, lineWidth: 1)
-                    )
-                    .padding(.horizontal)
+                        .cornerRadius(8)
+                        .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
+                        .frame(maxWidth: 220, maxHeight: 150, alignment: .topLeading)
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.black)
+                                .stroke(Color.gray, lineWidth: 1)
+                        )
+                        .padding(.horizontal)
                 }
             }
             .frame(maxWidth: 220, alignment: .topLeading)
@@ -68,6 +77,14 @@ public struct ComboBox: View {
                     print("Error decoding json: \(error)")
                 }
             }
+        }
+    }
+    
+    private func filterOptions( ) {
+        if searchText.isEmpty {
+            filteredOptions = options
+        } else {
+            filteredOptions = options.filter { $0.name.lowercased().contains(searchText.lowercased())}
         }
     }
     // Simulated JSON data
