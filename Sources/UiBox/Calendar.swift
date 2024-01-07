@@ -105,7 +105,7 @@ public struct CalendarView: View {
 public struct EventOverlay: View {
   public var body: some View {
     HStack {
-      
+
     }
   }
 }
@@ -118,10 +118,10 @@ public struct DayView: View {
   public var body: some View {
     Text("\(day, formatter: DateFormatter.dayFormatter)")
       .cornerRadius(15)
-      .foregroundStyle(isHighlighted ? Color.white : (day.isInWeekend() ? Color.gray : Color.white))
-      .background(isHighlighted ? Color.gray : (day == Date() ? Color.blue : Color.clear))
       .frame(width: 30, height: 30)
       .padding(5)
+      .foregroundStyle(isHighlighted ? Color.white : (day.isInWeekend() ? Color.gray : Color.white))
+      .background(isHighlighted ? Color.gray : (day == Date() ? Color.blue : Color.clear))
   }
 }
 
