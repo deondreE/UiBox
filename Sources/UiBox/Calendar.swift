@@ -21,7 +21,7 @@ public struct CalendarView: View {
     public var body: some View {
         VStack {
             headerView
-                .padding(.top, 20)
+                .padding(.top, 10)
             daysHeaderView
             daysGridView
                 .padding(.top, 3)
