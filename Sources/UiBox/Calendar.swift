@@ -121,7 +121,7 @@ public struct DayView: View {
       .frame(width: 30, height: 30)
       .padding(5)
       .foregroundStyle(isHighlighted ? Color.white : (day.isInWeekend() ? Color.gray : Color.white))
-      .background(isHighlighted ? Color.gray : (day == Date() ? Color.blue : Color.clear))
+      .background(isHighlighted ? Color(UIColor(hex: "#a3a3a3", alpha: 0.8)) : (day == Date() ? Color.blue : Color.clear))
   }
 }
 
@@ -153,4 +153,23 @@ extension DateFormatter {
     formatter.dateFormat = "d"
     return formatter
   }()
+}
+
+// TODO: put this in a util struct.
+@available(iOS 17.0, macOS 14.0, *)
+extension UIColor {
+  convenience init(hex: String, alpha: CGFloat = 1.0) {
+    var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
+    hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
+    
+    var rgb: UInt64 = 0
+    
+    Scanner(string: hexSanitized).scanHexInt64(&rgb)
+    
+    let red = CGFloat((rgb & 0xFF0000) >> 16) / 255.0
+    let green = CGFloat((rgb & 0x00FF00) >> 8) / 255.0
+    let blue = CGFloat((rgb & 0x0000FF)) / 255.0
+    
+    self.init(red: red, green: green, blue: blue, alpha: alpha)
+  }
 }
