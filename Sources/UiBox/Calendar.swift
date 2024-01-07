@@ -119,12 +119,12 @@ public struct DayView: View {
     Button (action: {
     })  {
       Text("\(day, formatter: DateFormatter.dayFormatter)")
-        .frame(width: 30, height: 30)
-        .background(isHighlighted ? Color.gray : (day == Date() ? Color.blue : Color.clear))
         .foregroundStyle(isHighlighted ? Color.white : (day.isInWeekend() ? Color.gray : Color.white))
-        .cornerRadius(15)
-        .padding(5)
     }
+    .frame(width: 30, height: 30)
+    .cornerRadius(15)
+    .padding(5)
+    .background(isHighlighted ? Color.gray : (day == Date() ? Color.blue : Color.clear))
   }
 }
 
