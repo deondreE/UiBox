@@ -102,17 +102,29 @@ public struct CalendarView: View {
 }
 
 @available(iOS 17.0, macOS 14.0, *)
+public struct EventOverlay: View {
+  public var body: some View {
+    HStack {
+      
+    }
+  }
+}
+
+@available(iOS 17.0, macOS 14.0, *)
 public struct DayView: View {
   let day: Date
   let isHighlighted: Bool
 
   public var body: some View {
-    Text("\(day, formatter: DateFormatter.dayFormatter)")
-      .frame(width: 30, height: 30)
-      .background(isHighlighted ? Color.gray : (day == Date() ? Color.blue : Color.clear))
-      .foregroundStyle(isHighlighted ? Color.white : (day.isInWeekend() ? Color.gray : Color.white))
-      .cornerRadius(15)
-      .padding(5)
+    Button (action: {
+    })  {
+      Text("\(day, formatter: DateFormatter.dayFormatter)")
+        .frame(width: 30, height: 30)
+        .background(isHighlighted ? Color.gray : (day == Date() ? Color.blue : Color.clear))
+        .foregroundStyle(isHighlighted ? Color.white : (day.isInWeekend() ? Color.gray : Color.white))
+        .cornerRadius(15)
+        .padding(5)
+    }
   }
 }
 
