@@ -67,9 +67,9 @@ public struct CalendarView: View {
               .foregroundStyle(.white)
               .font(.headline)
           }
-          Divider()
-            .background(Color.gray)
         }
+        Divider()
+          .background(Color.gray)
       }
     }
     
