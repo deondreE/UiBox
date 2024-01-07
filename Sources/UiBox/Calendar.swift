@@ -61,7 +61,8 @@ public struct CalendarView: View {
         ForEach(daysOfWeek, id: \.self) { day in
           Text(day)
             .frame(maxWidth: .infinity)
-            .padding(2)
+            .padding(.bottom, 2)
+            .padding(.top, 2)
             .foregroundStyle(.white)
             .font(.headline)
         }
