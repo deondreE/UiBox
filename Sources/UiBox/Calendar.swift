@@ -82,8 +82,6 @@ public struct CalendarView: View {
                       self.toggleHighlight(day)
                   }
             }
-            Divider()
-              .background(Color.gray)
         }
     }
     
