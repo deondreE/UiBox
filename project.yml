@@ -18,7 +18,7 @@ targets:
     resources: [Resources]
     settings:
       base:
-        INFO_PLIST_FILE: UiBox/Info.plist
+        INFO_PLIST_FILE: UIBox/Info.plist
       debug:
         SWIFT_OPTIMIZATION_LEVEL: "-Onone"
       release:
