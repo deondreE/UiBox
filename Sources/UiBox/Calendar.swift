@@ -57,17 +57,19 @@ public struct CalendarView: View {
     }
   
     private var daysHeaderView: some View {
-      HStack {
-        ForEach(daysOfWeek, id: \.self) { day in
-          Text(day)
-            .frame(maxWidth: .infinity)
-            .padding(.bottom, 2)
-            .padding(.top, 2)
-            .foregroundStyle(.white)
-            .font(.headline)
+      VStack {
+        HStack {
+          ForEach(daysOfWeek, id: \.self) { day in
+            Text(day)
+              .frame(maxWidth: .infinity)
+              .padding(.bottom, 2)
+              .padding(.top, 2)
+              .foregroundStyle(.white)
+              .font(.headline)
+          }
+          Divider()
+            .background(Color.gray)
         }
-        Divider()
-          .background(Color.gray)
       }
     }
     
@@ -79,9 +81,9 @@ public struct CalendarView: View {
                       self.selectedDate = day
                       self.toggleHighlight(day)
                   }
-                Divider()
-                  .background(Color.gray)
             }
+            Divider()
+              .background(Color.gray)
         }
     }
     
