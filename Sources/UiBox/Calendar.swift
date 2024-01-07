@@ -67,6 +67,7 @@ public struct CalendarView: View {
         Text("F")
         Text("S")
       }
+      .foregroundStyle(.white)
     }
     
     private var daysGridView: some View {
