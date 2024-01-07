@@ -31,12 +31,13 @@ public struct CalendarView: View {
         .shadow(radius: 10)
     }
     
+    // Header View for the calendar
     private var headerView: some View {
         HStack {
             Button(action: {
                 self.month = Calendar.current.date(byAdding: .month, value: -1, to: self.month) ?? self.month
             }) {
-                Image(systemName: "chevron.left")
+                Image(systemName: "chevron.left.circle.fill")
                     .font(.title)
             }
             
@@ -49,6 +50,7 @@ public struct CalendarView: View {
                 Image(systemName: "chevron.right.circle.fill")
                     .font(.title)
             }
+            // add create event button here.
          }
         .foregroundStyle(Color.white)
     }
