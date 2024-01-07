@@ -22,6 +22,8 @@ public struct CalendarView: View {
         VStack {
             headerView
                 .padding(.top, 20)
+            daysHeaderView
+                .padding(.top, 2)
             daysGridView
                 .padding(.vertical)
         }
@@ -54,15 +56,27 @@ public struct CalendarView: View {
          }
         .foregroundStyle(Color.white)
     }
+  
+    private var daysHeaderView: some View {
+      HStack {
+        Text("S")
+        Text("M")
+        Text("T")
+        Text("W")
+        Text("T")
+        Text("F")
+        Text("S")
+      }
+    }
     
     private var daysGridView: some View {
         LazyVGrid(columns: Array(repeating: GridItem(), count: 7), spacing: 10) {
             ForEach(month.allDaysInMonth(), id: \.self) { day in
                 DayView(day: day, isHighlighted: highlightedDays.contains(String(Calendar.current.component(.day, from: day))))
-                    .onTapGesture {
-                        self.selectedDate = day
-                        self.toggleHighlight(day)
-                    }
+                  .onTapGesture {
+                      self.selectedDate = day
+                      self.toggleHighlight(day)
+                  }
             }
         }
     }
@@ -100,9 +114,10 @@ public extension Date {
         return range.map { calendar.date(bySetting: .day, value: $0, of: self)! }
     }
     
+    // This is not returning the correct values.
     func isInWeekend() -> Bool {
         let calendar = Calendar.current
-        return calendar.isDateInWeekend(self)
+        return calendar.isDateInWeekend(self) // FIX HERE.
     }
 }
 
