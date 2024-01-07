@@ -22,8 +22,6 @@ public struct CalendarView: View {
         VStack {
             headerView
                 .padding(.top, 20)
-            daysHeaderView
-                .padding(.top, 2)
             daysGridView
                 .padding(.vertical)
         }
@@ -72,6 +70,7 @@ public struct CalendarView: View {
     
     private var daysGridView: some View {
         LazyVGrid(columns: Array(repeating: GridItem(), count: 7), spacing: 10) {
+            Text("S")
             ForEach(month.allDaysInMonth(), id: \.self) { day in
                 DayView(day: day, isHighlighted: highlightedDays.contains(String(Calendar.current.component(.day, from: day))))
                   .onTapGesture {
