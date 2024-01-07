@@ -66,6 +66,8 @@ public struct CalendarView: View {
             .foregroundStyle(.white)
             .font(.headline)
         }
+        Divider()
+          .background(Color.gray)
       }
     }
     
@@ -77,6 +79,8 @@ public struct CalendarView: View {
                       self.selectedDate = day
                       self.toggleHighlight(day)
                   }
+                Divider()
+                  .background(Color.gray)
             }
         }
     }
