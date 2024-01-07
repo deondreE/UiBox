@@ -24,7 +24,7 @@ public struct CalendarView: View {
                 .padding(.top, 20)
             daysHeaderView
             daysGridView
-                .padding(.vertical)
+                .padding(.top, 3)
         }
         .padding()
         .background(Color.black)
