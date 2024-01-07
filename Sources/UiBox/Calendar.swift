@@ -71,6 +71,7 @@ public struct CalendarView: View {
     private var daysGridView: some View {
         LazyVGrid(columns: Array(repeating: GridItem(), count: 7), spacing: 10) {
             Text("S")
+            .foregroundStyle(.white)
             ForEach(month.allDaysInMonth(), id: \.self) { day in
                 DayView(day: day, isHighlighted: highlightedDays.contains(String(Calendar.current.component(.day, from: day))))
                   .onTapGesture {
