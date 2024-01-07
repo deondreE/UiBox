@@ -8,16 +8,22 @@
 import SwiftUI
 
 @available(iOS 17.0, macOS 14.0, *)
+public struct Event {
+  public var name: String
+  public var day: Date
+}
+
+@available(iOS 17.0, macOS 14.0, *)
 public struct CalendarView: View {
   @State private var month: Date
   @State private var selectedDate: Date?
   @State private var highlightedDays: Set<String> = []
   private let daysOfWeek = ["S", "M", "T", "W", "T", "F", "S"]
-
+  
   public init() {
     _month = State(initialValue: Date())
   }
-
+  
   public var body: some View {
     VStack {
       headerView
@@ -31,32 +37,36 @@ public struct CalendarView: View {
     .cornerRadius(20)
     .shadow(radius: 10)
   }
-
+  
   // Header View for the calendar
   private var headerView: some View {
     HStack {
       Button(action: {
         self.month =
-          Calendar.current.date(byAdding: .month, value: -1, to: self.month) ?? self.month
+        Calendar.current.date(byAdding: .month, value: -1, to: self.month) ?? self.month
       }) {
         Image(systemName: "chevron.left.circle.fill")
           .font(.title)
-      }
-
+          .foregroundStyle(.blue)
+      }.padding(.horizontal, 2)
+      
       Text("\(month, formatter: DateFormatter.monthYearFormatter)")
-        .font(.headline)
-
+        .font(.title)
+        .bold( )
+      
       Button(action: {
         self.month = Calendar.current.date(byAdding: .month, value: 1, to: self.month) ?? self.month
       }) {
         Image(systemName: "chevron.right.circle.fill")
           .font(.title)
-      }
+          .foregroundStyle(.blue)
+      }.padding(.horizontal, 2)
+
       // add create event button here.
     }
     .foregroundStyle(Color.white)
   }
-
+  
   private var daysHeaderView: some View {
     VStack {
       HStack {
@@ -74,38 +84,46 @@ public struct CalendarView: View {
         .background(Color.gray)
     }
   }
-
+  
   private var daysGridView: some View {
-    LazyVGrid(columns: Array(repeating: GridItem(), count: 7), spacing: 10) {
-      ForEach(month.allDaysInMonth(), id: \.self) { day in
-        DayView(
-          day: day,
-          isHighlighted: highlightedDays.contains(
-            String(Calendar.current.component(.day, from: day)))
-        )
-        .onTapGesture {
-          self.selectedDate = day
-          self.toggleHighlight(day)
+    VStack {
+      LazyVGrid(columns: Array(repeating: GridItem(), count: 7), spacing: 10) {
+        ForEach(month.allDaysInMonth(), id: \.self) { day in
+          DayView(
+            day: day,
+            isHighlighted: highlightedDays.contains(
+              String(Calendar.current.component(.day, from: day)))
+          )
+          .onTapGesture {
+            self.selectedDate = day
+            self.toggleHighlight(day)
+          }
         }
+      }
+      .overlay {
+        HStack {
+          Spacer() // Add a Spacer to push the button to the right
+          
+          Button(action: {
+            // Action when the button is tapped
+          }) {
+            Image(systemName: "plus.circle")
+              .font(.title2)
+              .foregroundStyle(.blue)
+          }
+        }
+        .padding(.top, 200) // maybe make this better
+        .padding(.horizontal, 6)
       }
     }
   }
-
+  
   private func toggleHighlight(_ day: Date) {
     let dayNumber = String(Calendar.current.component(.day, from: day))
     if highlightedDays.contains(dayNumber) {
       highlightedDays.remove(dayNumber)
     } else {
       highlightedDays.insert(dayNumber)
-    }
-  }
-}
-
-@available(iOS 17.0, macOS 14.0, *)
-public struct EventOverlay: View {
-  public var body: some View {
-    HStack {
-
     }
   }
 }
@@ -119,6 +137,7 @@ public struct DayView: View {
     Text("\(day, formatter: DateFormatter.dayFormatter)")
       .cornerRadius(15)
       .frame(width: 30, height: 30)
+      .frame(maxWidth: 300, maxHeight: 300)
       .padding(5)
       .foregroundStyle(isHighlighted ? Color.white : (day.isInWeekend() ? Color.gray : Color.white))
       .background(isHighlighted ? Color(UIColor(hex: "#a3a3a3", alpha: 0.8)) : (day == Date() ? Color.blue : Color.clear))
@@ -176,4 +195,5 @@ extension UIColor {
 
 #Preview {
   CalendarView()
+    .padding()
 }
