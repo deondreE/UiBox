@@ -22,6 +22,8 @@ public struct CalendarView: View {
         VStack {
             headerView
                 .padding(.top, 20)
+          daysHeaderView
+            .padding()
             daysGridView
                 .padding(.vertical)
         }
@@ -55,23 +57,19 @@ public struct CalendarView: View {
         .foregroundStyle(Color.white)
     }
   
+    private var daysHeaderText: some View {
+      Text("T")
+        .foregroundStyle(.white)
+    }
+  
     private var daysHeaderView: some View {
-      HStack {
-        Text("S")
-        Text("M")
-        Text("T")
-        Text("W")
-        Text("T")
-        Text("F")
-        Text("S")
+      LazyVGrid(columns: Array(repeating: GridItem(), count: 7), spacing: 10) {
+        daysHeaderText
       }
-      .foregroundStyle(.white)
     }
     
     private var daysGridView: some View {
         LazyVGrid(columns: Array(repeating: GridItem(), count: 7), spacing: 10) {
-            Text("S")
-            .foregroundStyle(.white)
             ForEach(month.allDaysInMonth(), id: \.self) { day in
                 DayView(day: day, isHighlighted: highlightedDays.contains(String(Calendar.current.component(.day, from: day))))
                   .onTapGesture {
