@@ -12,8 +12,8 @@ public struct CalendarView: View {
     @State private var month: Date
     @State private var selectedDate: Date?
     @State private var highlightedDays: Set<String> = []
+    private let daysOfWeek = ["S", "M", "T", "W", "T", "F", "S"]
 
-    
     public init() {
         _month = State(initialValue: Date())
     }
@@ -22,8 +22,7 @@ public struct CalendarView: View {
         VStack {
             headerView
                 .padding(.top, 20)
-          daysHeaderView
-            .padding()
+            daysHeaderView
             daysGridView
                 .padding(.vertical)
         }
@@ -57,14 +56,15 @@ public struct CalendarView: View {
         .foregroundStyle(Color.white)
     }
   
-    private var daysHeaderText: some View {
-      Text("T")
-        .foregroundStyle(.white)
-    }
-  
     private var daysHeaderView: some View {
-      LazyVGrid(columns: Array(repeating: GridItem(), count: 7), spacing: 10) {
-        daysHeaderText
+      HStack {
+        ForEach(daysOfWeek, id: \.self) { day in
+          Text(day)
+            .frame(maxWidth: .infinity)
+            .padding(2)
+            .foregroundStyle(.white)
+            .font(.headline)
+        }
       }
     }
     
