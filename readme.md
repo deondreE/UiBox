@@ -1,6 +1,12 @@
 # UiBox Component library.
 
-Component library for mobile devices.
+<p align="center">
+<img alt="uibox_logo" src=".github/images/logo.png" style="border: solid 1px yellow; border-radius: 10px;">
+</p>
+
+> Component library for mobile devices.
+
+> ⚠️ Still work in progress.
 
 # Components inside this library
 
@@ -19,8 +25,13 @@ Component library for mobile devices.
 -   [x] Checkbox.
 
 # Setup for contributing.
+This project uses [xcodegen]() for its generation.
 
+Here are the steps to getting started.
 
-download `xcodegen`.
-
-run `xcodegen generate`
+```bash 
+# 1. install xcodegen.
+brew install xcodegen
+# 2. run xcodegen
+xcodegen generate 
+```
