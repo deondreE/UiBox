@@ -229,8 +229,6 @@ public struct DayView: View {
       Text("\(day, formatter: DateFormatter.dayFormatter)")
         .cornerRadius(15)
         .frame(width: 30, height: 30)
-        .frame(maxWidth: 300, maxHeight: 300)
-        .padding(5)
         .foregroundStyle(isHighlighted ? Color.white : (day.isInWeekend() ? Color.gray : Color.white))
         .background(
           isHighlighted
@@ -240,7 +238,7 @@ public struct DayView: View {
           .fill(Color.orange)
           .frame(width: 5, height: 5)
       }
-    }
+    }.frame(width: 40, height: 40).frame(maxHeight: 40)
   }
 }
 
